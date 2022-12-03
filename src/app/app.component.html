@@ -1,34 +1,49 @@
-<h1>Password Generator</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">
+        Password Generator
+      </h1>
+      <div class="field">
+        <label>Enter Length: </label>
+        <input (input)="onChangeLength($event)" class="input" />
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox" for="chkBoxUseLetters">
+            <input type="checkbox" (change)="onChangeUseLetters()" id="chkBoxUseLetters" />
+            Use Letters
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label>Enter Length: </label>
-  <input (input)="onChangeLength($event)" />
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox" for="chkBoxUseNumbers">
+            <input type="checkbox" (change)="onChangeUseNumbers()" id="chkBoxUseNumbers" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label for="">Use Letters</label>
-  <input type="checkbox" (change)="onChangeUseLetters()" />
-</div>
-
-<div>
-  <label for="">Use Numbers</label>
-  <input type="checkbox" (change)="onChangeUseNumbers()" />
-</div>
-
-<div>
-  <label for="">Use Symbols</label>
-  <input type="checkbox" (change)="onChangeUseSymbols()" />
-</div>
-
-<div>
-  <button (click)="onButtonClick()" [disabled]="!(length && (includeLetters || includeNumbers || includeSymbols))">
-    Generate
-  </button>
-</div>
-
-<div>
-  <label for="">
-    Your Password:
-  </label>
-  <input type="text" [value]="getPassword()" />
+      <div class="field">
+        <div class="control">
+          <label class="checkbox" for="chkBoxUseSymbols">
+            <input type="checkbox" (change)="onChangeUseSymbols()" id="chkBoxUseSymbols" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+      <button class="button is-link is-fullwidth" (click)="onButtonClick()"
+        [disabled]="!(length && (includeLetters || includeNumbers || includeSymbols))">
+        Generate
+      </button>
+      <div class="box" *ngIf="password">
+        <label>
+          Your Password:
+        </label>
+        <input type="text" class="input" [value]="getPassword()" />
+      </div>
+    </div>
+  </div>
 </div>
